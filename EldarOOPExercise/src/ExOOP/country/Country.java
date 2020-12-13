@@ -21,7 +21,7 @@ public class Country {
 
         for (int i = 0 ; i < this.highways.length ; i ++){
 
-            Highway h = new Highway("Highway"+ i);
+            Highway h = new Highway("Highway "+ (i+1));
             h.populateHighway();
             this.highways[i] = h;
             System.out.println(h);

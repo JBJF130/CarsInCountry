@@ -17,6 +17,39 @@ public class MainProgram {
         printAvgSpeedOfCarsInCountry(israel);
         printFastestCar(israel);
         printHighwayWithMoreCars(israel);
+        printFastestHighWay(israel);
+
+    }
+
+    private static void printFastestHighWay(Country country) {
+        double avgByHighway = 0;
+        double fastestAvgByHighway = 0;
+        Highway fastestHighway = null;
+        for (Highway oneHighway : country.getHighways()) {
+
+            if (oneHighway != null) {
+
+                for (Car oneCar : oneHighway.getCars()) {
+
+                    if (oneCar != null) {
+                        avgByHighway += oneCar.getSpeed();
+
+                    } else {
+                        break;
+                    }
+                }
+                avgByHighway /= oneHighway.getCars().length;
+                if (avgByHighway > fastestAvgByHighway) {
+                    fastestAvgByHighway = avgByHighway;
+                    fastestHighway = oneHighway;
+                }
+            } else {
+                break;
+            }
+
+        }
+        System.out.println("The fastest Highway is " + fastestHighway.getName());
+
 
     }
 
@@ -154,9 +187,9 @@ public class MainProgram {
             } else {
                 break;
             }
-               countOfCars = 0;
+            countOfCars = 0;
         }
-        System.out.println("The Highway : " + busiest.getName()+ "  has the most cars. Total cars: " + maxCarsInHighWay + " cars");
+        System.out.println("The Highway : " + busiest.getName() + "  has the most cars. Total cars: " + maxCarsInHighWay + " cars");
 
     }
 }
